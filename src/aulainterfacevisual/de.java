@@ -1,0 +1,7 @@
+
+package aulainterfacevisual;
+
+
+class de {
+
+}

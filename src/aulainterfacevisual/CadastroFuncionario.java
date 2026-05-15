@@ -4,6 +4,8 @@
  */
 package aulainterfacevisual;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 1092624
@@ -30,7 +32,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txfNome1 = new javax.swing.JTextField();
+        txfNome = new javax.swing.JTextField();
         jcbSetor = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         ckbValeAlimentacao = new javax.swing.JCheckBox();
@@ -39,10 +41,12 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         ckbHomeOffice = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         rbManha = new javax.swing.JRadioButton();
-        rbManha1 = new javax.swing.JRadioButton();
-        rbManha2 = new javax.swing.JRadioButton();
+        rbTarde = new javax.swing.JRadioButton();
+        rbNoite = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jsExperiencia = new javax.swing.JSlider();
+        jLabel3 = new javax.swing.JLabel();
+        jbSalvarCadastro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro do Funcionario");
@@ -53,13 +57,18 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         jLabel2.setText("Setor");
 
-        txfNome1.addActionListener(new java.awt.event.ActionListener() {
+        txfNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfNome1ActionPerformed(evt);
+                txfNomeActionPerformed(evt);
             }
         });
 
         jcbSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TI - Tecnologia da Inovação", "RH - Recursos Humanos", "Financeiro", "Administrativo" }));
+        jcbSetor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbSetorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -67,19 +76,17 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(107, 107, 107)
-                .addComponent(jLabel2)
-                .addContainerGap(320, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jcbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addComponent(txfNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(225, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(214, 214, 214)
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jcbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,13 +96,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jcbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(41, Short.MAX_VALUE)
-                    .addComponent(txfNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(25, 25, 25)))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Benefícios Desejados"));
@@ -145,16 +149,16 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         bgTurno.add(rbManha);
         rbManha.setText("Manhã");
 
-        bgTurno.add(rbManha1);
-        rbManha1.setText("Tarde");
-        rbManha1.addActionListener(new java.awt.event.ActionListener() {
+        bgTurno.add(rbTarde);
+        rbTarde.setText("Tarde");
+        rbTarde.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbManha1ActionPerformed(evt);
+                rbTardeActionPerformed(evt);
             }
         });
 
-        bgTurno.add(rbManha2);
-        rbManha2.setText("Noite");
+        bgTurno.add(rbNoite);
+        rbNoite.setText("Noite");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -163,8 +167,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rbManha)
-                    .addComponent(rbManha1)
-                    .addComponent(rbManha2))
+                    .addComponent(rbTarde)
+                    .addComponent(rbNoite))
                 .addGap(0, 49, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -173,9 +177,9 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(rbManha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rbManha1)
+                .addComponent(rbTarde)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rbManha2)
+                .addComponent(rbNoite)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -188,22 +192,38 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jsExperiencia.setSnapToTicks(true);
         jsExperiencia.setValue(0);
 
+        jLabel3.setText("Experiência:");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jsExperiencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jsExperiencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(27, 27, 27)
                 .addComponent(jsExperiencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jbSalvarCadastro.setText("Salvar Cadastro");
+        jbSalvarCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarCadastroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,7 +239,11 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 36, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(jbSalvarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,24 +255,64 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addGap(65, 65, 65)
+                .addComponent(jbSalvarCadastro)
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txfNome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNome1ActionPerformed
+    private void txfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txfNome1ActionPerformed
+    }//GEN-LAST:event_txfNomeActionPerformed
 
     private void ckbValeAlimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbValeAlimentacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ckbValeAlimentacaoActionPerformed
 
-    private void rbManha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbManha1ActionPerformed
+    private void rbTardeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTardeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbManha1ActionPerformed
+    }//GEN-LAST:event_rbTardeActionPerformed
+
+    private void jbSalvarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarCadastroActionPerformed
+        String Cadastro = "";
+
+        if (rbManha.isSelected()) {
+
+            Cadastro = "Manhã ";
+
+        }
+        if (rbTarde.isSelected()) {
+
+            Cadastro = "Tarde ";
+
+        }
+        if (rbNoite.isSelected()) {
+
+            Cadastro = "Noite ";
+        }
+         String Informacao = "";
+         
+         
+         Informacao +="Nome do Funcionario: " +txfNome.getText()+"\n"; 
+         Informacao += "Vale Alimentção: "  +ckbValeAlimentacao.isSelected()+ "\n";
+         Informacao +=  "Plano de Saude: "+ckbPlanodeSaude.isSelected()+ "\n";
+         Informacao +=  "Vale Transporte: "+ckbValeTransporte.isSelected()+ "\n";
+         Informacao +=  "HOme Office: "+ckbHomeOffice.isSelected()+ "\n";
+         
+         Informacao += "Turno De trabalho " + Cadastro + "\n";
+         Informacao += "Nivel de Experiencia " + jsExperiencia.getValue() + ".";
+         
+         JOptionPane.showMessageDialog(null," Cadastro Salvo!");
+         
+         JOptionPane.showMessageDialog(null,Informacao);
+    }//GEN-LAST:event_jbSalvarCadastroActionPerformed
+
+    private void jcbSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbSetorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbSetorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,15 +357,17 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JCheckBox ckbValeTransporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton jbSalvarCadastro;
     private javax.swing.JComboBox<String> jcbSetor;
     private javax.swing.JSlider jsExperiencia;
     private javax.swing.JRadioButton rbManha;
-    private javax.swing.JRadioButton rbManha1;
-    private javax.swing.JRadioButton rbManha2;
-    private javax.swing.JTextField txfNome1;
+    private javax.swing.JRadioButton rbNoite;
+    private javax.swing.JRadioButton rbTarde;
+    private javax.swing.JTextField txfNome;
     // End of variables declaration//GEN-END:variables
 }
